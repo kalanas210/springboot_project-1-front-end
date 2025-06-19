@@ -1,0 +1,442 @@
+<div class="sidebar" (click)="clickOnMainContent()">
+    <ul class="mt-3">
+        <div class="sideBarItems">
+            <img src="img/dashboard_1828791.png" alt="" class="me-3 mt-lg-0 mt-md-2">
+            <div class="d-lg-flex d-md-none d-sm-none d-none">Dashboard</div>
+        </div>
+        <div class="sideBarItems" (click)="goToProfile()">
+            <div class="me-3"><i class="fa fa-user fa-2x" aria-hidden="true"></i></div>
+            <div class="d-lg-flex d-md-none d-sm-none d-none">Profile</div>
+        </div>
+        <div class="sideBarItems" (click)="btnAddItems()">
+            <img src="img/add.png" alt=""  class="me-3">
+            <div class="d-lg-flex d-md-none d-sm-none d-none">Add Items</div>
+        </div>
+        <div class="sideBarItems" (click)="addSuppliersFunction()">
+            <img src="img/add-item.png" alt=""  class="me-3">
+            <div class="d-lg-flex d-md-none d-sm-none d-none">Add Suppliers</div>
+        </div>
+        <div class="sideBarItems">
+            <img src="img/review.png" alt="" class="me-3">
+            <div class="d-lg-flex d-md-none d-sm-none d-none">Dashboard</div>
+        </div>
+        <div class="sideBarItems">
+            <img src="img/database.png" alt="" class="me-3">
+            <div class="d-lg-flex d-md-none d-sm-none d-none">Orders</div>
+        </div>
+        <div class="sideBarItems">
+            <img src="img/parcel.png" alt="" class="me-3">
+            <div class="d-lg-flex d-md-none d-sm-none d-none">Dashboard</div>
+        </div>
+    </ul>
+</div>
+<div class="main-Content">
+
+    <div class="searchRow row d-flex justify-content-center mt-3 mb-3 ms-1">
+        <div class="d-flex">
+            <input class="searchBox form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                [(ngModel)]="searchText" (click)="clickOnSearchBox()">
+            <button class="btn btn-outline-success" type="button" (click)="clickOnSearchBtn()">Search</button>
+        </div>
+    </div>
+
+    <div class="searchPanel col-lg-4 d-none" *ngIf="searchBox">
+        <div class="card shadow ms-3 p-2">
+            <div class="searchItem mb-1 ms-2" (click)="clickOnSearchResult('ddd')">
+                <div class="me-1"><i class="fas fa-search"></i></div>BMV1526
+            </div>
+            <div class="searchItem mb-1 ms-2">
+                <div class="me-1"><i class="fas fa-search"></i></div>BMV1526
+            </div>
+        </div>
+    </div>
+
+    <div class="row ms-1 me-1" *ngIf="detailsDiv">
+        <div class="col-xl-6 col-md-12 col-sm-12 col-12 mb-xl-0 mb-lg-0 mb-md-3 mb-sm-3">
+            <div class="card shadow h-100">
+                <div class="card-body">
+                    <img src={{item.itemImage}} alt="" srcset="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-md-12 col-sm-12 col-12">
+            <div class="card shadow h-100">
+                <div class="card-body detailsDiv">
+                    <h3 class="guardianInfo">Item Information</h3>
+                    <hr>
+                    <div class="detailsRow">
+                        <label for="studentName" class="label form-label"><strong>Item-Code : </strong></label>
+                        <label for="studentName" class="label form-label"><strong>{{item.itemCode}}</strong></label>
+                    </div>
+                    <div class="detailsRow">
+                        <label for="studentName" class="label form-label"><strong>Name : </strong></label>
+                        <label for="studentName" class="label form-label"><strong>{{item.itemName}}</strong></label>
+                    </div>
+                    <div class="detailsRow">
+                        <label for="studentName" class="label form-label"><strong>Description : </strong></label>
+                        <label for="studentName" class="label form-label"><strong>{{item.itemDescription}}</strong></label>
+                    </div>
+                    <div class="detailsRow">
+                        <label for="studentName" class="label form-label"><strong>Category : </strong></label>
+                        <label for="studentName" class="label form-label"><strong>{{item.itemCategory}}</strong></label>
+                    </div>
+                    <div class="detailsRow">
+                        <label for="studentName" class="label form-label"><strong>Quantity : </strong></label>
+                        <label for="studentName" class="label form-label"><strong>{{item.itemQuantity}}</strong></label>
+                    </div>
+                    <div class="detailsRow">
+                        <label for="studentName" class="label form-label"><strong>Price : </strong></label>
+                        <label for="studentName" class="label form-label"><strong>{{item.itemPrice}}</strong></label>
+                    </div>
+                    <div class="buttonRow">
+                        <button class="btnClear" id="btnUpdate" (click)="btnUpdate(item)">Update</button>
+                        <button class="btnRegister" id="btnDelete" (click)="btnDelete(item)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3 ms-1 me-1">
+
+        <div class="col-xl-3 col-lg-03 col-md-6 col-sm-6 col-12 mb-4">
+            <div class="card shadow border-start-0 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center g-xl-0">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-primary fw-bold mb-1"><span>Earnings (Monthly)</span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span>$40,000</span></div>
+                        </div>
+                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-03 col-md-6 col-sm-6 col-12 mb-4">
+            <div class="card shadow border-start-0 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center g-xl-0">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-primary fw-bold mb-1"><span>Orders (Monthly)</span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span>24</span></div>
+                        </div>
+                        <div class="col-auto"><i class="fa-solid fa-cart-shopping fa-2x"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-03 col-md-6 col-sm-6 col-12 mb-4">
+            <div class="card shadow border-start-0 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center g-xl-0">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-primary fw-bold mb-1"><span>Customers (Monthly)</span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span>43</span></div>
+                        </div>
+                        <div class="col-auto"><i class="fa-solid fa-circle-user fa-2x"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-03 col-md-6 col-sm-6 col-12 mb-4">
+            <div class="card shadow border-start-0 py-2">
+                <div class="card-body">
+                    <div class="row align-items-center g-xl-0">
+                        <div class="col me-2">
+                            <div class="text-uppercase text-primary fw-bold mb-1"><span>Suppliers (Monthly)</span></div>
+                            <div class="text-dark fw-bold h5 mb-0"><span>12</span></div>
+                        </div>
+                        <div class="col-auto"><i class="fa-solid fa-warehouse fa-2x"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container-fluid mb-3">
+        <h3 class="text-dark mb-4 ms-1 mt-2">Laptops</h3>
+        <div class="card shadow">
+            <div class="card-header py-3">
+                <p class="text-primary m-0 fw-bold">Items Info</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6 text-nowrap">
+                        <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label
+                                class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
+                                    <option value="10" selected="">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>&nbsp;</label></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-md-end dataTables_filter" id="dataTable_filter"><label
+                                class="form-label"><input type="search" class="form-control form-control-sm"
+                                    aria-controls="dataTable" placeholder="Search"></label></div>
+                    </div>
+                </div>
+                <div class="table-responsive table table-hover mt-2" id="dataTable" role="grid"
+                    aria-describedby="dataTable_info">
+                    <table class="table my-0" id="dataTable">
+                        <thead>
+                            <tr>
+                                <th>Item ID</th>
+                                <th>Item Name</th>
+                                <th>Item Qty</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of itemsList">
+                                <td>{{item.itemCode}}</td>
+                                <td>{{item.itemName}}</td>
+                                <td>{{item.itemQuantity}}</td>
+                                <td>
+                                    <div class="icon link-success" (click)="btnUpdate(item)"><i class="fas fa-edit"></i>
+                                    </div>
+                                </td>
+                                <td class="icon d-flex float-start link-danger" (click)="btnDelete(item)"><i
+                                        class="fa fa-trash" aria-hidden="true"></i></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<div class="modal" tabindex="-1" #addItems>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Items</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="itemName" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="itemName" [(ngModel)]="item.itemName" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemImage" class="form-label">Item Image</label>
+                    <input type="text" class="form-control" id="itemImage" [(ngModel)]="item.itemImage" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemDescription" class="form-label">Item Description</label>
+                    <input type="text" class="form-control" id="itemDescription" [(ngModel)]="item.itemDescription"
+                        placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemPrice" class="form-label">Item Price</label>
+                    <input type="number" class="form-control" id="itemPrice" [(ngModel)]="item.itemPrice"
+                        placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemQuantity" class="form-label">Item Quantity</label>
+                    <input type="number" class="form-control" id="itemQuantity" [(ngModel)]="item.itemQuantity"
+                        placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemCategory" class="form-label">Item Category</label>
+                    <select id="itemCategory" class="form-select" [(ngModel)]="item.itemCategory">
+                        <option value="asus">Asus</option>
+                        <option value="msi">MSI</option>
+                        <option value="hp">Hp</option>
+                        <option value="apple">Apple</option>
+                        <option value="dell">Dell</option>
+                        <option value="acer">Acer</option>
+                        <option value="lenovo">Lenovo</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="itemCode" class="form-label">Item Code</label>
+                    <input type="text" class="form-control" id="itemCode" [(ngModel)]="item.itemCode" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="supplierId" class="form-label">Supplier Id</label>
+                    <input type="text" class="form-control" id="supplierId" [(ngModel)]="item.supplierId"
+                        placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="submitItemForm()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" #addSuppliers>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Supplier</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="supplier.supplierName" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput2" class="form-label">Email</label>
+                    <input type="email" class="form-control" [(ngModel)]="supplier.supplierEmail" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput3" class="form-label">Phone Number</label>
+                    <input type="tel" class="form-control" [(ngModel)]="supplier.supplierPhone" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput4" class="form-label">Company Name</label>
+                    <input type="text" class="form-control" [(ngModel)]="supplier.supplierCompany" placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="submitSupplierForm()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" #updateItem>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="ms-5 me-5"></div>
+                <h5 class="modal-title ms-5 text-dark fw-bold text-uppercase">Update Item</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="itemName" class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="itemName" [(ngModel)]="newItem.itemName">
+                </div>
+                <div class="mb-3">
+                    <label for="itemImage" class="form-label">Item Image</label>
+                    <input type="text" class="form-control" id="itemImage" [(ngModel)]="newItem.itemImage"
+                        placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemDescription" class="form-label">Item Description</label>
+                    <input type="text" class="form-control" id="itemDescription" [(ngModel)]="newItem.itemDescription"
+                        placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemPrice" class="form-label">Item Price</label>
+                    <input type="number" class="form-control" id="itemPrice" [(ngModel)]="newItem.itemPrice"
+                        placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemQuantity" class="form-label">Item Quantity</label>
+                    <input type="number" class="form-control" id="itemQuantity" [(ngModel)]="newItem.itemQuantity"
+                        placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="itemCategory" class="form-label">Item Category</label>
+                    <select id="itemCategory" class="form-select" [(ngModel)]="newItem.itemCategory">
+                        <option value="asus">Asus</option>
+                        <option value="msi">MSI</option>
+                        <option value="hp">Hp</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="itemCode" class="form-label">Item Code</label>
+                    <input type="text" class="form-control" id="itemCode" [(ngModel)]="newItem.itemCode" placeholder="">
+                </div>
+                <div class="mb-3">
+                    <label for="supplierId" class="form-label">Supplier Id</label>
+                    <input type="text" class="form-control" id="supplierId" [(ngModel)]="newItem.supplierId"
+                        placeholder="">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="btnUpdateItem()">Update Item</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" #confirmDelete>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="ms-5 me-5"></div>
+                <h5 class="modal-title d-flex justify-content-center text-center ms-5 text-dark fw-bold">Confirmation
+                </h5>
+                <div class="ms-2 mt-1"><i class="fas fa-exclamation-circle"></i></div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-center text-center align-items-center">
+                <p>Are you sure you want to delete this item ?</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-danger" (click)="btnDeleteItem()">Yes, I'm sure</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No, cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loader">
+    <div class="loadingio-spinner-spinner-2by998twmg8">
+        <div class="ldio-yzaezf3dcmj">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container position-fixed top-0 end-50 p-3 z-3">
+    <div #deleteToast class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <i class={{toastImg}}></i>
+            <strong class="ms-2 me-auto">Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body fw-semibold">
+            {{toastMsg}}
+        </div>
+    </div>
+</div>
