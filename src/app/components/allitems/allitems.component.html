@@ -1,0 +1,65 @@
+<div class="mainDiv">
+    <div class="bannerImg">
+        <img src="img/100.jpg" alt="" srcset="" class="img-fluid">
+    </div>
+
+    <div class="itemsHeader text-uppercase mt-3">
+        ALL LAPTOPS
+    </div>
+
+    <div class="filterSection container row-cols-auto">
+        <div class="chooseIconImg" (click)="loadItems()">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/all-icon.jpg" alt="" srcset="">
+        </div>
+        <div class="chooseIconImg" (click)="search('asus')">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/4.jpg" alt="" srcset="">
+        </div>
+        <div class="chooseIconImg" (click)="search('apple')">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/71.jpg" alt="" srcset="">
+        </div>
+        <div class="chooseIconImg" (click)="search('dell')">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/2.jpg" alt="" srcset="">
+        </div>
+        <div class="chooseIconImg" (click)="search('hp')">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/1.jpg" alt="" srcset="">
+        </div>
+        <div class="chooseIconImg" (click)="search('acer')">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/3.jpg" alt="" srcset="">
+        </div>
+        <div class="chooseIconImg" (click)="search('msi')">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/66.jpg" alt="" srcset="">
+        </div>
+        <div class="chooseIconImg" (click)="search('lenovo')">
+            <img src="https://www.gallelaptop.lk/images/sub_categories/5.jpg" alt="" srcset="">
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div *ngFor="let item of itemsList" class="col-lg-3 col-md-4 col-sm-6">
+                <app-product-items [itemInfo]="item"></app-product-items>
+            </div>    
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loader">
+    <div class="loadingio-spinner-spinner-2by998twmg8">
+        <div class="ldio-yzaezf3dcmj">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loading-overlay"></div>

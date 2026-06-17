@@ -1,0 +1,238 @@
+<div class="navBar">
+    <div class="d-xl-flex d-lg-flex d-md-none d-sm-none d-none"><img src="img/200.jpg" alt="" srcset="" width="30"
+            height="24" class="ms-5">
+    </div>
+    <button class="ms-3 btn btn-primary d-lg-none" (click)="btnNav()"><i class="fa fa-align-justify" aria-hidden="true"></i></button>
+    <div class="d-flex">
+        <ul class="me-5 text-white d-xl-flex d-lg-flex d-md-none d-sm-none d-none">
+            <li routerLink="" class="mt-3">Home</li>
+            <li routerLink="/all-items" class="mt-3 ">All Products</li>
+            <li routerLink="/cart" class="mt-3">Cart</li>
+            <li routerLink="/contact" class="mt-3">Contact</li>
+        </ul>
+        <div class="me-2 d-flex justify-content-center align-items-center" *ngIf="showSignInButtons">
+            <button class="btn btn-primary mx-3" (click)="showSignIn()">Login</button>
+            <button class="btn btn-primary mx-3" (click)="showSignUp()">SignUp</button>
+        </div>
+        <div>
+            <div class="avatar mt-2 mx-3" (click)="showAvatarPopOver()" *ngIf="showAvatar">
+                {{firstLetter}}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="main-nav-model" *ngIf="navModel" data-aos="fade-right">
+    <div class="mb-2 d-flex justify-content-end">
+        <div></div>
+        <button type="button" class="btn-close bg-body-secondary" (click)="btnNav()"></button>
+    </div>
+    <div class="nav-model">
+        <div class="nav-Item mt-4" routerLink="" (click)="btnNav()">
+            Home
+        </div>
+        <div class="nav-Item" routerLink="/all-items" (click)="btnNav()">
+            All Products
+        </div>
+        <div class="nav-Item" routerLink="/cart" (click)="btnNav()">
+            Cart
+        </div>
+        <div class="nav-Item" routerLink="/contact" (click)="btnNav()">
+            Contact
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" tabindex="-1" #signInModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Sign In</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-outline mb-4 text-center">
+                    <input type="email" id="signIn_Email" class="form-control" placeholder="Email Address"
+                        [(ngModel)]="signIn.email" />
+                </div>
+                <div class="form-outline mb-4 text-center">
+                    <input type="password" id="signIn_Password" class="form-control" placeholder="Password"
+                        [(ngModel)]="signIn.password" />
+                </div>
+                <div class="row mb-4">
+                    <div class="col d-flex justify-content-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                            <label class="form-check-label" for="form2Example31"> Remember me </label>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <a class="text-decoration-none pe-5" (click)="clickModel()">Forgot password?</a>
+                    </div>
+                    <div class="form-outline mb-4 text-center">
+                        <button type="button" class="btn btn-primary mt-4" (click)="btnSignIn()">Sign in</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" #forgotPassWordModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reset Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="itemName" class="form-label">Enter E-mail :</label>
+                <input type="text" class="form-control" id="itemName" [(ngModel)]="forgotPasswordEmail">
+            </div>
+            <div class="d-flex justify-content-start ms-3 mb-2">
+                <button type="button" class="btn btn-primary w-25" (click)="otpBtn()">Send OTP</button>
+            </div>
+            <div class="ms-3 me-3 mb-2" *ngIf="otp">
+                <label for="itemName" class="form-label">Enter OTP :</label>
+                <input type="text" class="form-control" id="itemName" [(ngModel)]="authObject.otpNumber">
+            </div>
+            <div class="d-flex justify-content-start ms-3 mb-3" *ngIf="otp">
+                <button type="button" class="btn btn-primary w-25" (click)="nextBtn()">Next</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" #resetPassword>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reset Password</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ms-3 me-3 mb-2">
+                    <label for="itemName" class="form-label">New Password :</label>
+                    <input type="password" class="form-control" id="itemName" [(ngModel)]="newPassword">
+                </div>
+                <div class="ms-3 me-3 mb-2">
+                    <label for="itemName" class="form-label">Confirm Password :</label>
+                    <input type="password" class="form-control" id="itemName" [(ngModel)]="confirmPassword">
+                </div>
+                <div class="d-flex justify-content-start ms-3 mb-3">
+                    <button type="button" class="btn btn-primary w-25" (click)="resetBtn()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" #signUpModal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Sign Up</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-floating mb-3">
+                    <input type="text" id="signIn_Email" class="form-control" placeholder="Full Name"
+                        [(ngModel)]="signUp.fullName" />
+                    <label for="floatingInput">Full Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        [(ngModel)]="signUp.email">
+                    <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        [(ngModel)]="signUp.password">
+                    <label for="floatingInput">Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                        [(ngModel)]="signUp.userType">
+                        <option selected>Select user type</option>
+                        <option value="admin">Admin</option>
+                        <option value="user">User</option>
+                    </select>
+                    <label for="floatingSelect">Select user type</label>
+                </div>
+                <div class="form-floating mb-3" *ngIf=" signUp.userType=='admin' ">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        [(ngModel)]="signUp.adminId">
+                    <label for="floatingInput">Admin Id</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        [(ngModel)]="signUp.phoneNumber">
+                    <label for="floatingInput">PhoneNumber</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        [(ngModel)]="signUp.city">
+                    <label for="floatingInput">City</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="btnSignUp()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loader">
+    <div class="loadingio-spinner-spinner-2by998twmg8">
+        <div class="ldio-yzaezf3dcmj">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="loading" class="loading-overlay">
+
+</div>
+
+<div class="avatarPopOver" *ngIf="avatar_pop_over">
+    <div class="items">
+        {{signUp.fullName}}
+    </div>
+    <div class="items" (click)="goToDashboard()">
+        Dashboard
+    </div>
+    <div class="items" (click)="signOut()">
+        SignOut
+    </div>
+</div>
+
+<div class="toast-container position-fixed top-0 end-50 p-3 z-3">
+    <div #deleteToast class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            <img src={{toastImgImg}} alt="" srcset="" width="8%" class="me-1">
+            <strong class="ms-2 me-auto">Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body fw-semibold">
+            {{toastMsg}}
+        </div>
+    </div>
+</div>
