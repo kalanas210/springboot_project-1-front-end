@@ -1,0 +1,208 @@
+
+.mainDiv{
+    top: 56px;
+    position: relative;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.cart{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px 70px;
+    border: 2px solid #3419cd;
+    border-radius: 9px;
+    max-height: 100vh;
+}
+
+.cart_title {
+    margin-top: 10px;
+    margin-inline: auto;
+    border-radius: 5px;
+    background-color: #007FFF;
+    width: 98%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.emptyCartImg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.emptyCartImg img{
+    max-width: 40%;
+}
+
+.cart_text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: normal;
+    margin-block: auto;
+    color: white;
+    font-weight: 600;
+}
+
+.cart_section {
+    overflow: auto;
+    margin: 5px;
+}
+
+.cart_item {
+    display: grid;
+    grid-template-columns: 20% 30% 20% 1fr;
+    border-radius: 5px;
+    background-color: #007FFF;
+    color: white;
+    gap: 2;
+    text-align: center;
+    margin-inline: 3px;
+}
+
+.cart_item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.cart_item .name {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+}
+
+.cart_item .totalPrice {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.cart_item .quantity {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.cart_item_name {
+    width: 50%;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.emptyCartImg{
+    display: flex;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.total {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    background-color: #007FFF;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border-radius: 5px;
+    padding-inline: 10px;
+}
+
+.checkout_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    height: 90%;
+}
+
+.cart_item {
+    display: grid;
+    grid-template-columns: 20% 30% 20% 1fr;
+    border-radius: 5px;
+    background-color: #007FFF;
+    color: white;
+    gap: 2;
+    text-align: center;
+    margin-inline: 3px;
+}
+
+.cart_item img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.cart_item .name {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+}
+
+.cart_item .totalPrice {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.cart_item .quantity {
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    font-size: small;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.cart_item_name {
+    width: 50%;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+}
+
+.toast-container{
+    position: fixed;
+    top:120px;
+    right: 50%;
+    z-index: 10000;
+}
+
