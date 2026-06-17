@@ -1,4 +1,4 @@
-# 💻 GizmoLK - Computer Shop Management System (Frontend)
+# 💻 GizmoLK - Computer Shop Management System ( Frontend )
 
 <div align="center">
   <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular" />
