@@ -40,7 +40,4 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
-temp_auto_push.bat
-temp_interactive_push.bat
-config.bat
 branch_structure.json
